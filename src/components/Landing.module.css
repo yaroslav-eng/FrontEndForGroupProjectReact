@@ -1,0 +1,106 @@
+.Landing {
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.Landing::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /*background-color: rgba(0,0,0,0.4);*/
+}
+.CenterColumn{
+    height: 100vh;
+    align-items: center;
+    /*vertical-align: center;*/
+}
+.Container5 {
+    /*height: 10em;*/
+
+    /*align-items: center;*/
+    top: 50%;
+}
+.flexboxcontainer {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+}
+.Container{
+    color: #FFFFFF;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    /*justify-content: center;*/
+    height: 85vh;
+    flex-direction: column;
+    /*align-items: start;*/
+    justify-content: flex-start;
+}
+
+.centered {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+.Container h1,h2{
+    letter-spacing: 2px;
+    margin-left: 2rem;
+}
+/*.Row{*/
+/*    margin-bottom: 0.2rem;*/
+/*    margin-top: 0.2rem;*/
+/*}*/
+
+/*.Row Col{*/
+/*    height: 100vh;*/
+/*}*/
+.Register{
+    margin-top: 50%s;
+    margin-left: 1rem;
+    position: relative;
+    display: block;
+    color: white;
+    font-size: 14px;
+    width: 350px;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    /*margin: 30px 0;*/
+    border: 2px solid #ff7675;
+    padding: 14px 60px;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 1s all ease;
+    backdrop-filter: brightness(30%);
+
+}
+.Register::before{
+    background: #ff7675;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    transition: all 0.6s ease;
+
+}
+
+.Register::before{
+    width: 0%;
+    height: 100%;
+
+}
+
+.Register:hover::before{
+    width: 100%;
+}
+
+

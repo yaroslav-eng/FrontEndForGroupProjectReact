@@ -1,0 +1,59 @@
+
+.Login {
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.SignIn{
+    font-size: 3rem;
+    /*width: 350px;*/
+    color: #FFFFFF;
+    font-family: 'Raleway', sans-serif;
+    align-self: center;
+}
+.Login button {
+    /*margin-bottom: 3rem;*/
+    margin-top: 3rem;
+    /*background: #ff7675;*/
+}
+.Login p{
+
+    font-size: 1rem;
+    /*width: 350px;*/
+    font-family: 'Montserrat', sans-serif;
+}
+.Login h1{
+    margin-left: 2rem;
+}
+.Login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+.MiddleContainer{
+    display: flex;
+    justify-content: center;
+    height: 85vh;
+    flex-direction: column;
+    align-items: start;
+
+}
+
+.centered {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+
