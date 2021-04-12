@@ -49,8 +49,8 @@ const Landing = () => {
         <div className={classes.Landing} style={{ backgroundImage: `url(${background})`}}>
             <div className={classes.centered}>
                 {/*change this to REGISTER*/}
-                {/*<Link to={"/register"} className="nav-link">*/}
-                    <Link to={"/dashboard"} className="nav-link">
+                <Link to={"/register"} className="nav-link">
+                    {/*<Link to={"/dashboard"} className="nav-link">*/}
                     <div className="mb-2">
                         <Button variant="primary" size="lg">
                             Sign Up

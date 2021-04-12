@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const api = axios.create({
-    baseURL: 'http://localhost:5432/api',
+    baseURL: 'http://localhost:8080/user',
     headers: {
         "Content-type": "application/json",
         'Accept': 'application/json',
@@ -17,19 +17,20 @@ export const getUsersById = (id) => api.get(`/users/${id}`);
 
 export const createUser = (data) => api.post(`/users`, data);
 
-export const getWorkHistory = (id) => api.get(`/work_history/${id}`);
-export const getAllWorkHistory = () => api.get(`/work_history`);
+
+
+export const getUser= () => api.get(`/get`);
+
 
 
 
 
 const apis = {
+    getUser,
     getAllUsers,
     getUsersById,
     createUser,
-    getWorkHistory,
-    getOtherIds,
-    getAllWorkHistory
+    getOtherIds
 }
 
 export default apis;

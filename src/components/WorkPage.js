@@ -14,30 +14,30 @@ const WorkPage = () => {
 
 
     useEffect(() => {
-        getTransHistory();
+        getUserInfo();
     }, []);
 
 
 
     // Your GET method to fill in the table goes here
-    const getTransHistory = async () => {
+    const getUserInfo = async () => {
         // console.log(workerData.id, "RESPONSE for WORK IDDDdd")
-        const response = await apiPostgres.getWorkHistory();
+        const response = await apiPostgres.getUser();
         setCustomerTrans(response.data);
-        console.log(response, "RESPONSE for WORK HISTORY")
+        console.log(response, "RESPONSE for GET USER")
 
-        console.log(response.data, "RESPONSE for WORK HISTORY DATA");
+        console.log(response.data, "RESPONSE for GET USER DATA");
 
     }
 
-    const customer = customerTrans.map((item, index) => (
+    const customer = customerTrans.map((user, index) => (
         <tbody>
-        <tr  key = {item.id}>
+        <tr  key = {user.id}>
 
             <th>1</th>
-            <th>{item.accountNumber}</th>
-            <th>{item.accountType}</th>
-            <th style={{margin:"0"}}>{item.Transaction}</th>
+            <th>{user.accountNumber}</th>
+            <th>{user.accountType}</th>
+            <th style={{margin:"0"}}>{user.Transaction}</th>
             {/*<th>*/}
             {/*    {item.pay_stub ? (*/}
             {/*        <span onClick={()=>pdfClick(index, item.id)} style={{cursor:"pointer"}}> PDF</span>*/}
