@@ -7,37 +7,60 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 import apiPostgres from "../shared/api/apiPostgres";
-
+import AuthService from "../shared/servicesApi/auth.service";
+import {Link} from "react-router-dom";
+import Button from "react-bootstrap/cjs/Button";
 
 const WorkPage = () => {
+    const currentUser = AuthService.getCurrentUser();
     const [customerTrans, setCustomerTrans] = useState([]);
 
 
-    useEffect(() => {
-        getUserInfo();
+    const [defUser, setDefUser] = useState("");
+
+    useEffect(()=> {
+        onChangeUser()
     }, []);
 
 
+    const onChangeUser = () => {
+        const defUser = currentUser.user;
+        setDefUser(defUser);
+        getUserInfo(defUser.user_id);
+    };
+
+    console.log(defUser, "THIS IS USEER");
+
 
     // Your GET method to fill in the table goes here
-    const getUserInfo = async () => {
-        // console.log(workerData.id, "RESPONSE for WORK IDDDdd")
-        const response = await apiPostgres.getUser();
+    const getUserInfo = async (props) => {
+        const response = await apiPostgres.getUserAccounts(props);
         setCustomerTrans(response.data);
-        console.log(response, "RESPONSE for GET USER")
+        // console.log(response, "RESPONSE for GET USER")
 
         console.log(response.data, "RESPONSE for GET USER DATA");
 
     }
 
-    const customer = customerTrans.map((user, index) => (
-        <tbody>
-        <tr  key = {user.id}>
 
-            <th>1</th>
-            <th>{user.accountNumber}</th>
-            <th>{user.accountType}</th>
-            <th style={{margin:"0"}}>{user.Transaction}</th>
+    const arr = customerTrans[0];
+    console.log(arr, " customer new")
+    const customer = customerTrans.map((account) => (
+
+        <tbody>
+        <tr  key = {account.acc_id}>
+
+            <th>{account.acc_id}</th>
+            <th>{account.account_number}</th>
+            <th>{account.account_type}</th>
+            <th style={{margin:"0"}}>{account.balance}</th>
+            <th style={{margin:"0"}}>    <Link to={"/transactionsView"} className="nav-link">
+                <div className="mb-2">
+                    <Button variant="primary" size="sm">
+                        view transactions
+                    </Button>
+                </div>
+            </Link></th>
             {/*<th>*/}
             {/*    {item.pay_stub ? (*/}
             {/*        <span onClick={()=>pdfClick(index, item.id)} style={{cursor:"pointer"}}> PDF</span>*/}
@@ -57,9 +80,10 @@ const WorkPage = () => {
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Account Number</th>
+                                    <th> Account Number</th>
                                     <th>Account Type</th>
-                                    <th>Transaction</th>
+                                    <th>Balance</th>
+                                    <th>Transactions</th>
                                 </tr>
                                 </thead>
                                 {customer}

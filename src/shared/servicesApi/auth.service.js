@@ -20,9 +20,9 @@ const login = (username, password) => {
         })
         .then((response) => {
             console.log("check 2 in CLIEENT: auth.service")
-            if (response.data.accessToken) {
-                localStorage.setItem("user", JSON.stringify(response.data));
-            }
+
+            localStorage.setItem("user", JSON.stringify(response.data));
+
             console.log(response.data, "check 2 A in CLIEENT: auth.service")
             return response.data;
         });
@@ -33,7 +33,7 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
-    console.log("check 3 in CLIEENT: auth.service")
+    console.log(JSON.parse(localStorage.getItem("user")), "check 3 in CLIEENT: auth.service")
     return JSON.parse(localStorage.getItem("user"));
 };
 
