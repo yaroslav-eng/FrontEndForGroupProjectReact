@@ -11,40 +11,40 @@ import AuthService from "../shared/servicesApi/auth.service";
 import Button from "react-bootstrap/cjs/Button";
 import {Link} from "react-router-dom";
 
-const Transactions = () => {
-    const currentAccount= AuthService.getCurrentAccount();
+const Transactions = (props) => {
+    // const currentAccount= AuthService.getCurrentAccount();
     const [tranactions, setTransactions] = useState([]);
 
 
-    const [defAccount, setDefAccount] = useState("");
+    // const [defAccount, setDefAccount] = useState("");
 
     useEffect(()=> {
-        onChangeAccount()
+        getTransactionInfo();
     }, []);
 
 
-    const onChangeAccount = () => {
-        const defAccount = currentAccount.user; //.user is wrong NEEDS TO BE CHANGED
-        setDefAccount(defAccount);
-        getTransactionInfo(defAccount.acc_number);
-    };
-
-    console.log(defAccount, "THIS IS current account");
-
+    // const onChangeAccount = () => {
+    //     const defAccount = currentAccount.user; //.user is wrong NEEDS TO BE CHANGED
+    //     setDefAccount(defAccount);
+    //     getTransactionInfo(defAccount.acc_number);
+    // };
+    //
+    // console.log(defAccount, "THIS IS current account");
+    //
 
     // Your GET method to fill in the table goes here
     const getTransactionInfo = async (props) => {
-        const response = await apiPostgres.getAccountTransactions(props);
-        setTransactions(response.data);
+        // const response = await apiPostgres.getTrans(props);
+        // setTransactions(response.data);
         // console.log(response, "RESPONSE for GET USER")
 
-        console.log(response.data, "RESPONSE for GET Account DATA");
+        console.log(props, "RESPONSE for TRANSACTIONS");
 
     }
 
 
-    const arr = tranactions[0];
-    console.log(arr, " Transactions list")
+    // const arr = tranactions[0];
+    // console.log(arr, " Transactions list")
     const transaction = tranactions.map((transaction) => (
 
         <tbody>

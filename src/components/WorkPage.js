@@ -10,6 +10,7 @@ import apiPostgres from "../shared/api/apiPostgres";
 import AuthService from "../shared/servicesApi/auth.service";
 import {Link} from "react-router-dom";
 import Button from "react-bootstrap/cjs/Button";
+import Transactions from "./Transactions";
 
 const WorkPage = () => {
     const currentUser = AuthService.getCurrentUser();
@@ -40,8 +41,25 @@ const WorkPage = () => {
 
         console.log(response.data, "RESPONSE for GET USER DATA");
 
+
     }
 
+    // const userTrans = (props) => {
+    //
+    //
+    //     const workers = worker.map((worker, index) => (
+    //         <Transactions
+    //             key = {String(worker.id)}
+    //             firstName = {worker .firstname}
+    //             lastName = {worker.lastname}
+    //             email = {worker.email}
+    //             phoneNumber = {worker.phone_number}
+    //             position = {worker.position}
+    //             click = {() => seeDetails(index)}
+    //         />
+    //     ));
+    //
+    // }
 
     const arr = customerTrans[0];
     console.log(arr, " customer new")
@@ -54,7 +72,9 @@ const WorkPage = () => {
             <th>{account.account_number}</th>
             <th>{account.account_type}</th>
             <th style={{margin:"0"}}>{account.balance}</th>
-            <th style={{margin:"0"}}>    <Link to={"/transactionsView"} className="nav-link">
+            <th style={{margin:"0"}}>
+
+            <Link to={"/transactionsView"} params={{ accType: account.account_number }} className="nav-link">
                 <div className="mb-2">
                     <Button variant="primary" size="sm">
                         view transactions
