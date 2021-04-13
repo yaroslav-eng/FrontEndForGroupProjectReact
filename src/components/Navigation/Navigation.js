@@ -36,7 +36,7 @@ const Navigation = ( props ) => {
         <div className={classes.NavigationItems} style={{width:"100%"}} >
 
             <nav className="navbar navbar-expand">
-                <div className="navbar-brand"> <h1>HOME</h1></div>
+                <div className="navbar-brand"> <h1>Cloudy Bank</h1></div>
                 {/*<Link to={"/"} className="navbar-brand">*/}
                 {/*    <h1>HOME</h1>*/}
                 {/*</Link>*/}

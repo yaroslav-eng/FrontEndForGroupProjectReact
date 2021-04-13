@@ -22,7 +22,7 @@ const App = props => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/dashboard" component={WorkPage} />
-            <Route exact path="/transactionsView/:id/" component={Transactions} />
+            <Route exact path="/transactionsView/" component={Transactions} />
         </Switch>
           </BrowserRouter>
 

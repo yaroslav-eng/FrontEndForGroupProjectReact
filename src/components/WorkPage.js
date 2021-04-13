@@ -44,23 +44,11 @@ const WorkPage = () => {
 
     }
 
-    // const userTrans = (props) => {
-    //
-    //
-    //     const workers = worker.map((worker, index) => (
-    //         <Transactions
-    //             key = {String(worker.id)}
-    //             firstName = {worker .firstname}
-    //             lastName = {worker.lastname}
-    //             email = {worker.email}
-    //             phoneNumber = {worker.phone_number}
-    //             position = {worker.position}
-    //             click = {() => seeDetails(index)}
-    //         />
-    //     ));
-    //
-    // }
 
+    const CreateSavingsAccount = () =>{
+        apiPostgres.createSavings(defUser.username);
+        window.location.reload();
+    }
     const arr = customerTrans[0];
     console.log(arr, " customer new")
     const customer = customerTrans.map((account) => (
@@ -74,13 +62,21 @@ const WorkPage = () => {
             <th style={{margin:"0"}}>{account.balance}</th>
             <th style={{margin:"0"}}>
 
-            <Link to={"/transactionsView"} params={{ accType: account.account_number }} className="nav-link">
-                <div className="mb-2">
-                    <Button variant="primary" size="sm">
-                        view transactions
-                    </Button>
-                </div>
-            </Link></th>
+            {/*<Link to={"/transactionsView"} params={{ accType: account.account_number }} className="nav-link">*/}
+            {/*    <div className="mb-2">*/}
+            {/*        <Button variant="primary" size="sm">*/}
+            {/*            view transactions*/}
+            {/*        </Button>*/}
+            {/*    </div>*/}
+            {/*</Link>*/}
+                <Link to = {{
+                    pathname:'/transactionsView',
+                    aboutProps:{
+                        number: account.account_number,
+                        user_id: defUser.user_id
+                    }
+                }}>View and Create Transactions</Link>
+            </th>
             {/*<th>*/}
             {/*    {item.pay_stub ? (*/}
             {/*        <span onClick={()=>pdfClick(index, item.id)} style={{cursor:"pointer"}}> PDF</span>*/}
@@ -108,6 +104,11 @@ const WorkPage = () => {
                                 </thead>
                                 {customer}
                             </Table>
+                        </Col>
+                    </Row>
+                    <Row >
+                        <Col>
+                            <Button onClick={() => CreateSavingsAccount()}>Create Savings Account</Button>
                         </Col>
                     </Row>
                 </Container>
